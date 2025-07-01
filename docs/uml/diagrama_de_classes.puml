@@ -1,0 +1,22 @@
+@startuml
+class Task {
+  - id: int
+  - description: str
+  - status: str
+  + __init__(id, description)
+  + update_status(new_status: str)
+  + get_details(): str
+}
+
+class TaskManager {
+  - tasks: list<Task>
+  - next_id: int
+  + add_task(description: str): Task
+  + list_tasks(): list<Task>
+  + find_task(task_id: int): Task
+  + update_task_status(task_id: int, new_status: str): bool
+  + delete_task(task_id: int): bool
+}
+
+TaskManager "1" o-- "*" Task : gerencia >
+@enduml

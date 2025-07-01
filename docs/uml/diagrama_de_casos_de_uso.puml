@@ -1,0 +1,16 @@
+@startuml
+left to right direction
+actor "Usuário" as user
+
+rectangle "Gerenciador de Tarefas" {
+  usecase "Criar Tarefa" as UC1
+  usecase "Visualizar Tarefas" as UC2
+  usecase "Atualizar Tarefa" as UC3
+  usecase "Excluir Tarefa" as UC4
+}
+
+user -- UC1
+user -- UC2
+user -- UC3
+user -- UC4
+@enduml
