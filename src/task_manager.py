@@ -1,5 +1,8 @@
 # src/task_manager.py
 
+# PASSO 1: Importar o 'Union' para compatibilidade com Python < 3.10
+from typing import Union, List 
+
 class Task:
     """
     Representa uma única tarefa no sistema.
@@ -21,18 +24,12 @@ class TaskManager:
     Mantém uma lista de tarefas e o controle do próximo ID disponível.
     """
     def __init__(self):
-        self._tasks = {}  # Usando um dicionário para acesso rápido por ID.
+        self._tasks = {}
         self._next_id = 1
 
     def add_task(self, description: str) -> Task:
         """
         Adiciona uma nova tarefa à lista.
-
-        Args:
-            description (str): A descrição da tarefa.
-
-        Returns:
-            Task: O objeto da tarefa criada.
         """
         if not description:
             raise ValueError("A descrição não pode ser vazia.")
@@ -42,32 +39,20 @@ class TaskManager:
         self._next_id += 1
         return new_task
 
-    def list_tasks(self) -> list:
+    def list_tasks(self) -> List[Task]:
         """Retorna uma lista de todas as tarefas cadastradas."""
         return list(self._tasks.values())
 
-    def get_task(self, task_id: int) -> Task | None:
+    # PASSO 2: Alterar a anotação de tipo aqui
+    def get_task(self, task_id: int) -> Union[Task, None]:
         """
         Busca uma tarefa pelo seu ID.
-
-        Args:
-            task_id (int): O ID da tarefa a ser buscada.
-
-        Returns:
-            Task or None: O objeto da tarefa, se encontrado, senão None.
         """
         return self._tasks.get(task_id)
 
     def update_task_status(self, task_id: int, new_status: str) -> bool:
         """
         Atualiza o status de uma tarefa existente.
-
-        Args:
-            task_id (int): O ID da tarefa a ser atualizada.
-            new_status (str): O novo status da tarefa.
-
-        Returns:
-            bool: True se a atualização foi bem-sucedida, False caso contrário.
         """
         task = self.get_task(task_id)
         if task:
@@ -78,12 +63,6 @@ class TaskManager:
     def delete_task(self, task_id: int) -> bool:
         """
         Exclui uma tarefa do sistema.
-
-        Args:
-            task_id (int): O ID da tarefa a ser excluída.
-
-        Returns:
-            bool: True se a exclusão foi bem-sucedida, False caso contrário.
         """
         if task_id in self._tasks:
             del self._tasks[task_id]
