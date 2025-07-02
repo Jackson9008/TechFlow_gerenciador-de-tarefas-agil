@@ -16,7 +16,6 @@ def main():
     """Função principal que executa o loop da aplicação."""
     manager = TaskManager()
     
-    # Adicionando tarefas iniciais para demonstração
     manager.add_task("Planejar rota de entrega para o cliente A")
     manager.add_task("Realizar manutenção preventiva no veículo B")
 
@@ -28,7 +27,8 @@ def main():
             description = input("Digite a descrição da nova tarefa: ")
             try:
                 task = manager.add_task(description)
-                print(f"Tarefa '{task.description}' adicionada com sucesso!")
+                # <-- ALTERAÇÃO AQUI: Exibe o ID da nova tarefa -->
+                print(f"Tarefa '{task.description}' adicionada com sucesso com o ID: {task.task_id}")
             except ValueError as e:
                 print(f"Erro: {e}")
 
