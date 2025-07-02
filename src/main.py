@@ -63,11 +63,11 @@ def main():
                 print("Erro: O ID da tarefa deve ser um número.")
 
         elif choice == '5':
-            print("Saindo do sistema. Até logo!")
+            print("Saindo do sistema. Até breve !!")
             break
 
         else:
-            print("Opção inválida. Por favor, tente novamente.")
+            print("Opção inválida. Por favor, tente novamente !!")
 
 if __name__ == "__main__":
     main()
