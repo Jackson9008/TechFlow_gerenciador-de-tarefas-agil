@@ -1,7 +1,6 @@
 # src/task_manager.py
 
-# PASSO 1: Importar o 'Union' para compatibilidade com Python < 3.10
-from typing import Union, List 
+from typing import Union, List
 
 class Task:
     """
@@ -18,6 +17,9 @@ class Task:
         return f"ID: {self.task_id} | Descrição: {self.description} | Status: {self.status}"
 
 
+# <-- ALTERAÇÃO AQUI: Duas linhas em branco separam as classes -->
+
+
 class TaskManager:
     """
     Gerencia todas as operações de tarefas (CRUD).
@@ -27,6 +29,7 @@ class TaskManager:
         self._tasks = {}
         self._next_id = 1
 
+    # <-- ALTERAÇÃO AQUI: Uma linha em branco separa os métodos -->
     def add_task(self, description: str) -> Task:
         """
         Adiciona uma nova tarefa à lista.
@@ -43,7 +46,6 @@ class TaskManager:
         """Retorna uma lista de todas as tarefas cadastradas."""
         return list(self._tasks.values())
 
-    # PASSO 2: Alterar a anotação de tipo aqui
     def get_task(self, task_id: int) -> Union[Task, None]:
         """
         Busca uma tarefa pelo seu ID.
